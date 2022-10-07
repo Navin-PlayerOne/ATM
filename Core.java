@@ -29,7 +29,7 @@ public class Core {
 			ObjectInputStream os = new ObjectInputStream(file);
 			atm=(ATM)os.readObject();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("No cash Avilabe in ATM at this moment!!!");
 		}
 		return atm;
 	}
@@ -77,6 +77,17 @@ public class Core {
 			e.printStackTrace();
 		}
 	}
+	public static void storeATMpermanent(ATM a) {
+		try {
+			FileOutputStream file = new FileOutputStream("atm.txt",false);
+			ObjectOutputStream os = new ObjectOutputStream(file);
+			os.writeObject(a);
+			os.close();
+			file.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public static void saveCustomer(TreeMap<Integer,Customer> customers) {
 		try {
 			FileOutputStream file = new FileOutputStream("customers.txt",false);
@@ -92,12 +103,12 @@ public class Core {
 		TreeMap<Integer,Customer> customers = new TreeMap<Integer,Customer>();
 		customers = restoreCustomer();
 		customers.forEach((b,a)->{
-			System.out.println("-------------------");
-			System.out.println(a.accountNumber);
-			System.out.println(a.name);
-			System.out.println(a.pin);
-			System.out.println(a.balance);
-			System.out.println("-------------------");
+			System.out.println("<---------**---------->");
+			System.out.println("Account No : "+a.accountNumber);
+			System.out.println("Name : "+a.name);
+			System.out.println("Pin: "+a.pin);
+			System.out.println("Balance : "+a.balance);
+			System.out.println("<---------**---------->");
 		});
 	}
 	public static void addCutomer() {
@@ -263,8 +274,11 @@ public class Core {
 				tmp.forEach((x,y)->{
 					System.out.println(x+" "+y);
 				});
-				original.loadCash(-1*a1,-1*b1,-1*c1);
-				saveATM(original);
+				//original.loadCash(-1*a1,-1*b1,-1*c1);
+				original.seth(a1);
+				original.setf(b1);
+				original.sett(c1);
+				storeATMpermanent(original);
 				cc.balance-=amnt;
 				customers.put(accno, cc);
 				saveCustomer(customers);

@@ -6,10 +6,13 @@ public class Menu {
 	public static void atmOperations() {
 		int choice=0;
 		Scanner sc = new Scanner(System.in);
+		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
 		System.out.println("1. Check Balance");
 		System.out.println("2. Withdraw Money");
 		System.out.println("3. Transfer Money");
 		System.out.println("4. Check ATM balance");
+		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+		System.out.print("=>");
 		choice = sc.nextInt();
 		switch(choice) {
 		case 1:
@@ -30,14 +33,17 @@ public class Menu {
 		}
 	}
 	public static void main(String[] args) {
-		int choice=0;
+		int choice=8;
 		Scanner sc = new Scanner(System.in);
-		while(choice!=5) {
+		while(true) {
+			System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
 			System.out.println("1. Load Cash to ATM");
 			System.out.println("2. Show Customer Details");
 			System.out.println("3. Show ATM operations");
 			System.out.println("4. Add Customer");
 			System.out.println("5. Exit");
+			System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+			System.out.print("=>");
 			choice = sc.nextInt();
 			switch(choice) {
 			case 1:
@@ -54,7 +60,6 @@ public class Menu {
 				break;
 				case 5:
 				System.exit(1);
-				break;
 				default:
 				System.out.println("InvalidInput");
 			}

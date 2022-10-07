@@ -47,6 +47,7 @@ public class ATM implements Serializable{
 	}
 	void dismantleCash(int hundred,int fivehundred,int twothousand) {
 		if(money.containsKey(100)) {
+			//System.out.println("hiijosiucguysvdduygfuysd");
 			money.put(100,money.get(100)-hundred);
 		}else {
 			money.put(100,0);
@@ -61,5 +62,14 @@ public class ATM implements Serializable{
 		}else {
 			money.put(2000,0);
 		}
+	}
+	void seth(int n) {
+		money.put(100,money.get(100)-n);
+	}
+	void setf(int n) {
+		money.put(500,money.get(500)-n);
+	}
+	void sett(int n) {
+		money.put(2000,money.get(2000)-n);
 	}
 }
